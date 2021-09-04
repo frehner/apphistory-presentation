@@ -283,6 +283,7 @@ function MyPresentation() {
       <HistoryAnchorIssues />
       <HistoryHasNoEvent />
       <HistoryShareIssues />
+      <HistoryStackHidden />
     </Deck>
   );
 }
@@ -363,24 +364,73 @@ function HistoryHasNoEvent() {
   return (
     <>
       <Slide>
-        When you click a button, you get <CodeSpan>click</CodeSpan> event When
-        you change the URL hash, you get <CodeSpan>hashchange</CodeSpan> event
-        When you submit a form, you get <CodeSpan>submit</CodeSpan> event When
-        Safari wants to notify you that Force Touching is about to start, you
-        get <CodeSpan>webkitmouseforcewillbegin</CodeSpan> event When the
-        drawing buffer associated with a WebGLRenderingContext object has been
-        lost, you get <CodeSpan>webglcontextlost</CodeSpan> event When you call{" "}
-        <CodeSpan>history.pushState()</CodeSpan>...
+        <UnorderedList>
+          <ListItem>
+            When you click a button, you get <CodeSpan>click</CodeSpan> event
+          </ListItem>
+          <ListItem>
+            When you change the URL hash, you get{" "}
+            <CodeSpan>hashchange</CodeSpan> event
+          </ListItem>
+          <ListItem>
+            When you submit a form, you get <CodeSpan>submit</CodeSpan> event
+          </ListItem>
+          <ListItem>
+            When the drawing buffer associated with a WebGLRenderingContext
+            object has been lost, you get <CodeSpan>webglcontextlost</CodeSpan>{" "}
+            event
+          </ListItem>
+          <ListItem>
+            If a friend commits to hanging out with you this weekend, but then
+            later cancels the plans, you get a{" "}
+            <CodeSpan>promise rejection</CodeSpan> event
+          </ListItem>
+          <ListItem>
+            When you call <CodeSpan>history.pushState()</CodeSpan>...
+          </ListItem>
+        </UnorderedList>
+        <Notes>
+          <p>
+            I'm going to ask you a question, and you tell me what event you get
+            from it:
+          </p>
+        </Notes>
       </Slide>
       <Slide>
         <Image src={youGetNothing} />
+        <Notes>
+          <p>
+            Isn't it wild that this very important event dealing with routing...
+            doesn't have an event you can listen for? So this is why you see
+            things like the smart people at React Training making a History
+            library, with one of the goals being that they can now observe when
+            calls are made to history.pushState()
+          </p>
+        </Notes>
       </Slide>
     </>
   );
 }
 
 function HistoryShareIssues() {
-  return <Slide>Because</Slide>;
+  return (
+    <Slide>
+      An unfortunate sideeffect of people building their own History management
+      is that there's no standard way of sharing that info. E.g. 3rd party
+      library, widget, or custom element. One of the "easiest" ways of solving
+      this is to directly monkeypatch history.pushState()
+    </Slide>
+  );
+}
+
+function HistoryStackHidden() {
+  return (
+    <Slide>
+      Due to security reasons, you can't see what's in the history stack; no
+      looking at what the URL was 3 navigations ago (unless you keep track
+      yourself)
+    </Slide>
+  );
 }
 
 ReactDOM.render(<MyPresentation />, document.getElementById("root"));

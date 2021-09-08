@@ -26,6 +26,7 @@ import {
 } from "spectacle";
 
 import youGetNothing from "./media/you-get-nothing.gif";
+import couldBeBetter from "./media/could-be-better.jpg";
 
 const formidableLogo =
   "https://avatars2.githubusercontent.com/u/5078602?s=280&v=4";
@@ -291,24 +292,36 @@ function MyPresentation() {
 function TopicOverview() {
   return (
     <Slide>
-      We're going to talk about History in browsers, and the AppHistory proposal
+      <Heading>Why are we here?</Heading>
+      <Text>
+        We're going to talk about History in browsers, and the AppHistory
+        proposal
+      </Text>
     </Slide>
   );
 }
 
 function NeilsTalk() {
   return (
-    <Slide>Neil's talk is going on, you probably want to be in that one</Slide>
+    <Slide>
+      <Heading>A Better Talk</Heading>
+      <Text>Neil's talk is going on, you probably want to be in that one</Text>
+    </Slide>
   );
 }
 
 function SelfInfo() {
-  return <Slide>Name, Twitter, Background, etc</Slide>;
+  return (
+    <Slide>
+      <Heading>Intro</Heading>Name, Twitter, Background, etc
+    </Slide>
+  );
 }
 
 function HistoryCallDirectly() {
   return (
     <Slide>
+      <Heading>Call Me Maybe</Heading>
       <CodePane language="javascript" showLineNumbers={false}>
         history.pushState()
       </CodePane>
@@ -319,8 +332,8 @@ function HistoryCallDirectly() {
 function ImANobody() {
   return (
     <Slide>
+      <Heading>I'm a nobody</Heading>
       <UnorderedList>
-        <ListItem>I'm (essentially) a nobody</ListItem>
         <ListItem>
           Not affiliated with any big company or group that works on this full
           time
@@ -342,14 +355,24 @@ function ImANobody() {
 }
 
 function HistoryProblemsOverview() {
-  return <Slide>History is good, but it can be better</Slide>;
+  return (
+    <Slide>
+      <Heading>History</Heading>
+      <Image
+        src={couldBeBetter}
+        alt="History is good, but it could be better"
+      />
+    </Slide>
+  );
 }
 
 function HistoryAnchorIssues() {
   return (
     <Slide>
-      You can use History with anchor tags... but you have to prevent default
-      and then call history.pushState / history.updateState
+      <Text>
+        You can use History with anchor tags... but you have to prevent default
+        and then call history.pushState / history.updateState
+      </Text>
       <Notes>
         <p>
           e.g. React Router code here
@@ -364,30 +387,60 @@ function HistoryHasNoEvent() {
   return (
     <>
       <Slide>
+        <Heading>Trivia Time!</Heading>
         <UnorderedList>
-          <ListItem>
-            When you click a button, you get <CodeSpan>click</CodeSpan> event
-          </ListItem>
-          <ListItem>
-            When you change the URL hash, you get{" "}
-            <CodeSpan>hashchange</CodeSpan> event
-          </ListItem>
-          <ListItem>
-            When you submit a form, you get <CodeSpan>submit</CodeSpan> event
-          </ListItem>
-          <ListItem>
-            When the drawing buffer associated with a WebGLRenderingContext
-            object has been lost, you get <CodeSpan>webglcontextlost</CodeSpan>{" "}
-            event
-          </ListItem>
-          <ListItem>
-            If a friend commits to hanging out with you this weekend, but then
-            later cancels the plans, you get a{" "}
-            <CodeSpan>promise rejection</CodeSpan> event
-          </ListItem>
-          <ListItem>
-            When you call <CodeSpan>history.pushState()</CodeSpan>...
-          </ListItem>
+          <Appear>
+            <ListItem>
+              When you click a button, you get{" "}
+              <CodeSpan>
+                <Appear tagName="span">click</Appear>
+              </CodeSpan>{" "}
+              event
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              When you change the URL hash, you get{" "}
+              <CodeSpan>
+                <Appear tagName="span">hashchange</Appear>
+              </CodeSpan>{" "}
+              event
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              When you submit a form, you get{" "}
+              <CodeSpan>
+                <Appear tagName="span">submit</Appear>
+              </CodeSpan>{" "}
+              event
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              When the drawing buffer associated with a WebGLRenderingContext
+              object has been lost, you get{" "}
+              <CodeSpan>
+                <Appear tagName="span">webglcontextlost</Appear>
+              </CodeSpan>{" "}
+              event
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              If a friend commits to hanging out with you this weekend, but then
+              later cancels the plans, you get a{" "}
+              <CodeSpan>
+                <Appear tagName="span">promise rejection</Appear>
+              </CodeSpan>{" "}
+              event
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              When you call <CodeSpan>history.pushState()</CodeSpan>...
+            </ListItem>
+          </Appear>
         </UnorderedList>
         <Notes>
           <p>
@@ -398,6 +451,10 @@ function HistoryHasNoEvent() {
       </Slide>
       <Slide>
         <Image src={youGetNothing} />
+      </Slide>
+      <Slide>
+        <Heading>Nothing!</Heading>
+        <Text>Wait, really?</Text>
         <Notes>
           <p>
             Isn't it wild that this very important event dealing with routing...
@@ -415,10 +472,15 @@ function HistoryHasNoEvent() {
 function HistoryShareIssues() {
   return (
     <Slide>
-      An unfortunate sideeffect of people building their own History management
-      is that there's no standard way of sharing that info. E.g. 3rd party
-      library, widget, or custom element. One of the "easiest" ways of solving
-      this is to directly monkeypatch history.pushState()
+      <Heading>Sharing Issues</Heading>
+      <Notes>
+        <p>
+          An unfortunate sideeffect of people building their own History
+          management is that there's no standard way of sharing that info. E.g.
+          3rd party library, widget, or custom element. One of the "easiest"
+          ways of solving this is to directly monkeypatch history.pushState()
+        </p>
+      </Notes>
     </Slide>
   );
 }
@@ -426,9 +488,14 @@ function HistoryShareIssues() {
 function HistoryStackHidden() {
   return (
     <Slide>
-      Due to security reasons, you can't see what's in the history stack; no
-      looking at what the URL was 3 navigations ago (unless you keep track
-      yourself)
+      <Heading>History Needs Its Own Space</Heading>
+      <Notes>
+        <p>
+          Due to security reasons, you can't see what's in the history stack; no
+          looking at what the URL was 3 navigations ago (unless you keep track
+          yourself)
+        </p>
+      </Notes>
     </Slide>
   );
 }

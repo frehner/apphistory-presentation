@@ -27,6 +27,7 @@ import {
 
 import youGetNothing from "./media/you-get-nothing.gif";
 import couldBeBetter from "./media/could-be-better.jpg";
+import angelic from "./media/angelic.jpg";
 
 const formidableLogo =
   "https://avatars2.githubusercontent.com/u/5078602?s=280&v=4";
@@ -279,13 +280,54 @@ function MyPresentation() {
       <SelfInfo />
       <TopicOverview />
       <ImANobody />
-      <HistoryProblemsOverview />
-      <HistoryCallDirectly />
-      <HistoryAnchorIssues />
-      <HistoryHasNoEvent />
-      <HistoryShareIssues />
-      <HistoryStackHidden />
+      <HProblemsOverview />
+      <HCallDirectly />
+      <HAnchorIssues />
+      <HNoEvent />
+      <HShareIssues />
+      <HStackHidden />
+      <AHOverview />
+      <AHCalls />
     </Deck>
+  );
+}
+
+const historyProblemStyles = {
+  border: "2px solid black",
+  style: { transform: "scale(.5)" },
+  padding: 4,
+};
+
+function AppHistorySolutionToProblem({ firstStepContent, secondStepContent }) {
+  return (
+    <>
+      <Slide>
+        <Stepper values={["apphistory"]} alwaysVisible>
+          {(_, step) => {
+            if (step === -1) return firstStepContent;
+            if (step === 0) return secondStepContent;
+          }}
+        </Stepper>
+      </Slide>
+    </>
+  );
+}
+
+function AHCalls() {
+  return (
+    <AppHistorySolutionToProblem
+      firstStepContent={
+        <div>
+          <Heading>Problem:</Heading>
+          <HCallDirectly ComponentAs={Box} styles={historyProblemStyles} />
+        </div>
+      }
+      secondStepContent={
+        <div>
+          <Heading>Solution:</Heading>
+        </div>
+      }
+    />
   );
 }
 
@@ -318,14 +360,14 @@ function SelfInfo() {
   );
 }
 
-function HistoryCallDirectly() {
+function HCallDirectly({ ComponentAs = Slide, styles = {} }) {
   return (
-    <Slide>
+    <ComponentAs {...styles}>
       <Heading>Call Me Maybe</Heading>
       <CodePane language="javascript" showLineNumbers={false}>
         history.pushState()
       </CodePane>
-    </Slide>
+    </ComponentAs>
   );
 }
 
@@ -354,7 +396,7 @@ function ImANobody() {
   );
 }
 
-function HistoryProblemsOverview() {
+function HProblemsOverview() {
   return (
     <Slide>
       <Heading>History</Heading>
@@ -366,7 +408,7 @@ function HistoryProblemsOverview() {
   );
 }
 
-function HistoryAnchorIssues() {
+function HAnchorIssues() {
   return (
     <Slide>
       <Text>
@@ -383,7 +425,7 @@ function HistoryAnchorIssues() {
   );
 }
 
-function HistoryHasNoEvent() {
+function HNoEvent() {
   return (
     <>
       <Slide>
@@ -469,7 +511,7 @@ function HistoryHasNoEvent() {
   );
 }
 
-function HistoryShareIssues() {
+function HShareIssues() {
   return (
     <Slide>
       <Heading>Sharing Issues</Heading>
@@ -485,7 +527,7 @@ function HistoryShareIssues() {
   );
 }
 
-function HistoryStackHidden() {
+function HStackHidden() {
   return (
     <Slide>
       <Heading>History Needs Its Own Space</Heading>
@@ -496,6 +538,15 @@ function HistoryStackHidden() {
           yourself)
         </p>
       </Notes>
+    </Slide>
+  );
+}
+
+function AHOverview() {
+  return (
+    <Slide backgroundImage={angelic}>
+      <Heading>Introducing...</Heading>
+      <Text>App History</Text>
     </Slide>
   );
 }

@@ -288,6 +288,8 @@ function MyPresentation() {
       <HStackHidden />
       <AHOverview />
       <AHCalls />
+      <AHAnchorTag />
+      <AHEvent />
     </Deck>
   );
 }
@@ -300,34 +302,91 @@ const historyProblemStyles = {
 
 function AppHistorySolutionToProblem({ firstStepContent, secondStepContent }) {
   return (
-    <>
-      <Slide>
-        <Stepper values={["apphistory"]} alwaysVisible>
-          {(_, step) => {
-            if (step === -1) return firstStepContent;
-            if (step === 0) return secondStepContent;
-          }}
-        </Stepper>
-      </Slide>
-    </>
+    <Stepper values={["apphistory"]} alwaysVisible>
+      {(_, step) => {
+        if (step === -1) return firstStepContent;
+        if (step === 0) return secondStepContent;
+      }}
+    </Stepper>
   );
 }
 
 function AHCalls() {
   return (
-    <AppHistorySolutionToProblem
-      firstStepContent={
-        <div>
-          <Heading>Problem:</Heading>
-          <HCallDirectly ComponentAs={Box} styles={historyProblemStyles} />
-        </div>
-      }
-      secondStepContent={
-        <div>
-          <Heading>Solution:</Heading>
-        </div>
-      }
-    />
+    <Slide>
+      <AppHistorySolutionToProblem
+        firstStepContent={
+          <>
+            <Heading>Problem:</Heading>
+            <HCallDirectly ComponentAs={Box} styles={historyProblemStyles} />
+          </>
+        }
+        secondStepContent={
+          <>
+            <Heading>Solution:</Heading>
+          </>
+        }
+      />
+    </Slide>
+  );
+}
+
+function AHAnchorTag() {
+  return (
+    <Slide>
+      <AppHistorySolutionToProblem
+        firstStepContent={
+          <>
+            <Heading>Problem:</Heading>
+            <HAnchorIssues ComponentAs={Box} styles={historyProblemStyles} />
+          </>
+        }
+        secondStepContent={
+          <>
+            <Heading>Solution:</Heading>
+            <CodePane language="html" showLineNumbers={false}>
+              {`<a href="/other-url">Go to other url</a>`}
+            </CodePane>
+          </>
+        }
+      />
+      <Notes>
+        <p>
+          Wait, you say: there's no javascript here! And that's exactly the
+          point. You now have hte beautiful semantic HTML, no javascript, and it
+          will still go through AppHistory. If someone has JS disabled? Still
+          works - it just does a full page refresh. If someone has JS enabled,
+          then they get the enhanced single-page experience.
+        </p>
+      </Notes>
+    </Slide>
+  );
+}
+
+function AHEvent() {
+  return (
+    <Slide>
+      <AppHistorySolutionToProblem
+        firstStepContent={
+          <>
+            <Heading>Problem:</Heading>
+            <HNoEventSummary ComponentAs={Box} styles={historyProblemStyles} />
+          </>
+        }
+        secondStepContent={
+          <>
+            <Heading>Solution:</Heading>
+            <CodePane language="javascript" showLineNumbers={false}>
+              {`
+                appHistory.addEventListener("navigate", (evt) => {
+                  // a navigation has occurred
+                })
+              `}
+            </CodePane>
+          </>
+        }
+      />
+    </Slide>
   );
 }
 
@@ -408,9 +467,9 @@ function HProblemsOverview() {
   );
 }
 
-function HAnchorIssues() {
+function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
   return (
-    <Slide>
+    <ComponentAs {...styles}>
       <Text>
         You can use History with anchor tags... but you have to prevent default
         and then call history.pushState / history.updateState
@@ -421,7 +480,7 @@ function HAnchorIssues() {
           https://github.com/remix-run/react-router/blob/main/packages/react-router-dom/modules/Link.js
         </p>
       </Notes>
-    </Slide>
+    </ComponentAs>
   );
 }
 
@@ -494,20 +553,26 @@ function HNoEvent() {
       <Slide>
         <Image src={youGetNothing} />
       </Slide>
-      <Slide>
-        <Heading>Nothing!</Heading>
-        <Text>Wait, really?</Text>
-        <Notes>
-          <p>
-            Isn't it wild that this very important event dealing with routing...
-            doesn't have an event you can listen for? So this is why you see
-            things like the smart people at React Training making a History
-            library, with one of the goals being that they can now observe when
-            calls are made to history.pushState()
-          </p>
-        </Notes>
-      </Slide>
+      <HNoEventSummary />
     </>
+  );
+}
+
+function HNoEventSummary({ ComponentAs = Slide, styles = {} }) {
+  return (
+    <ComponentAs {...styles}>
+      <Heading>Nothing!</Heading>
+      <Text>Wait, really?</Text>
+      <Notes>
+        <p>
+          Isn't it wild that this very important event dealing with routing...
+          doesn't have an event you can listen for? So this is why you see
+          things like the smart people at React Training making a History
+          library, with one of the goals being that they can now observe when
+          calls are made to history.pushState()
+        </p>
+      </Notes>
+    </ComponentAs>
   );
 }
 

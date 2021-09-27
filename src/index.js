@@ -417,12 +417,36 @@ function HStackHidden({ ComponentAs = Slide, styles = {} }) {
 }
 
 function AHOverview() {
-  console.log(angelic);
   return (
-    <Slide backgroundImage={angelic} backgroundOpacity={0.5}>
-      <Heading>Introducing...</Heading>
-      <Text>App History</Text>
-    </Slide>
+    <>
+      <Slide>
+        <Heading>Introducing...</Heading>
+        <Notes>
+          <p>Cue angelic music or something.</p>
+        </Notes>
+      </Slide>
+      <Slide backgroundImage={`url(${angelic})`} backgroundOpacity={0.3}>
+        <FlexBox alignItems="center" height="100%" flexDirection="column">
+          <Heading>App History</Heading>
+          <Appear>
+            <Text>The foundation of web 3.0? 🤔</Text>
+          </Appear>
+        </FlexBox>
+        <Notes>
+          <p>
+            I actually don't know what this Web 3.0 stuff is, and I don't
+            actually think of App History as some sort of angel that will save
+            us from history's sins or whatever.
+          </p>
+          <p>
+            But the hope is that App History can fix some of those glaring
+            issues while hopefully not introducing new ones. So, with the
+            knowledge of some of the headaches that history has, let's see how
+            app history hopefully cleans things up
+          </p>
+        </Notes>
+      </Slide>
+    </>
   );
 }
 

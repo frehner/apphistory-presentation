@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import { FlexBox, FullScreen, Progress, Deck, Box } from "spectacle";
 import {
   HProblemsOverview,
-  HCallDirectly,
   HAnchorIssues,
   HNoEvent,
   HShareIssues,
@@ -12,10 +11,10 @@ import {
 } from "./History";
 import {
   AHOverview,
-  AHCalls,
   AHAnchorTag,
   AHEvent,
   AHStack,
+  AHLoadingStatus,
 } from "./AppHistory";
 import { NeilsTalk, SelfInfo, TopicOverview } from "./IntroSlides";
 import { ImANobody } from "./ExitSlides";
@@ -54,16 +53,15 @@ function MyPresentation() {
       <SelfInfo />
       <TopicOverview />
       <HProblemsOverview />
-      <HCallDirectly />
       <HAnchorIssues />
       <HNoEvent />
       <HShareIssues />
       <HStackHidden />
       <AHOverview />
-      <AHCalls />
       <AHAnchorTag />
       <AHEvent />
       <AHStack />
+      <AHLoadingStatus />
       <ImANobody />
     </Deck>
   );

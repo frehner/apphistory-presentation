@@ -15,17 +15,6 @@ import {
 import youGetNothing from "./media/you-get-nothing.gif";
 import couldBeBetter from "./media/could-be-better.jpg";
 
-export function HCallDirectly({ ComponentAs = Slide, styles = {} }) {
-  return (
-    <ComponentAs {...styles}>
-      <Heading>Call Me Maybe</Heading>
-      <CodePane language="javascript" showLineNumbers={false}>
-        history.pushState()
-      </CodePane>
-    </ComponentAs>
-  );
-}
-
 export function HProblemsOverview() {
   return (
     <Slide>
@@ -56,13 +45,46 @@ export function HProblemsOverview() {
 export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
-      <Text>
-        You can use History with anchor tags... but you have to prevent default
-        and then call history.pushState / history.updateState
-      </Text>
+      <Heading>Anchor Integration</Heading>
+      <CodePane language="html">
+        {`
+          <a href="my-url"> Click! </a>
+        `}
+      </CodePane>
+      <Text>How do we integrate this HTML with History?</Text>
+      <Appear>
+        <CodePane language="html">
+          {`
+            <a href="my-url"> Click! </a>
+
+            <script>
+              anchor.addEventListener('click', (evt) => {
+                // other checks here too
+                evt.preventDefault()
+                history.pushState(state, title, url)
+              })
+            </script>
+          `}
+        </CodePane>
+      </Appear>
       <Notes>
         <p>
-          e.g. React Router code here
+          History has to be called manually, and doesn't integrate with HTML by
+          default. For example, when working with an anchor tag, you don't have
+          history routing even if you have a perfectly semantic and beautiful
+          anchor tag.
+        </p>
+        <p>
+          So in order to integrate history, you have your anchor tag... and then
+          you have to prevent default (as seen on line 6), and call history
+          directly (as seen on line 7). And after you use this for a bit, you'll
+          also realize that you have to allow links to external URL through, or
+          allow "control" clicks through, or what if you want a replace state
+          instead of push state, or... etc., which is what's mentioned on line
+          5.
+        </p>
+        <p>
+          React Router code here for example
           https://github.com/remix-run/react-router/blob/main/packages/react-router-dom/modules/Link.js
         </p>
       </Notes>

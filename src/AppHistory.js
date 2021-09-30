@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  HCallDirectly,
   HAnchorIssues,
   HShareIssues,
   HStackHidden,
@@ -34,26 +33,6 @@ function AppHistorySolutionToProblem({ firstStepContent, secondStepContent }) {
         if (step === 0) return secondStepContent;
       }}
     </Stepper>
-  );
-}
-
-export function AHCalls() {
-  return (
-    <Slide>
-      <AppHistorySolutionToProblem
-        firstStepContent={
-          <>
-            <Heading>Problem:</Heading>
-            <HCallDirectly ComponentAs={Box} styles={historyProblemStyles} />
-          </>
-        }
-        secondStepContent={
-          <>
-            <Heading>Solution:</Heading>
-          </>
-        }
-      />
-    </Slide>
   );
 }
 
@@ -174,5 +153,13 @@ export function AHOverview() {
         </Notes>
       </Slide>
     </>
+  );
+}
+
+export function AHLoadingStatus() {
+  return (
+    <Slide>
+      <Heading>Loading...</Heading>
+    </Slide>
   );
 }

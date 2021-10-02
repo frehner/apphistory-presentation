@@ -21,7 +21,7 @@ import angelic from "./media/angelic.jpg";
 
 const historyProblemStyles = {
   border: "2px solid black",
-  style: { transform: "scale(.5)" },
+  style: { transform: "scale(.5) translateY(-25%)" },
   padding: 4,
 };
 
@@ -57,12 +57,18 @@ export function AHAnchorTag() {
       />
       <Notes>
         <p>
+          Before the solution is shown: Remeber the problem we had earlier with
+          anchor tags and history? Well, what kind of crazy solution do you
+          think exists for that in app history?
+        </p>
+        <p>
           Wait, you say: there's no javascript here! And that's exactly the
-          point. You now have hte beautiful semantic HTML, no javascript, and it
-          will still go through AppHistory. If someone has JS disabled? Still
+          point. You now have this beautiful, semantic HTML, no javascript, and
+          it will still go through AppHistory. If someone has JS disabled? Still
           works - it just does a full page refresh. If someone has JS enabled,
           then they get the enhanced single-page experience.
         </p>
+        <hr />
       </Notes>
     </Slide>
   );
@@ -160,6 +166,22 @@ export function AHLoadingStatus() {
   return (
     <Slide>
       <Heading>Loading...</Heading>
+    </Slide>
+  );
+}
+
+export function AHAccessibility() {
+  return (
+    <Slide>
+      <Heading>Accessibility</Heading>
+    </Slide>
+  );
+}
+
+export function AHBonusFeatures() {
+  return (
+    <Slide>
+      <Heading>Bonus Features!</Heading>
     </Slide>
   );
 }

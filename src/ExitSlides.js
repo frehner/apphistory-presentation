@@ -26,3 +26,11 @@ export function ImANobody() {
     </Slide>
   );
 }
+
+export function GetInvolved() {
+  return (
+    <Slide>
+      <Heading>Have Opinions?</Heading>
+    </Slide>
+  );
+}

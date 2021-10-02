@@ -14,6 +14,10 @@ import {
 } from "spectacle";
 import youGetNothing from "./media/you-get-nothing.gif";
 import couldBeBetter from "./media/could-be-better.jpg";
+import babies1 from "./media/babies1.jpg";
+import babies2 from "./media/babies2.png";
+
+const imageProps = { style: { objectFit: "cover" }, height: "100%" };
 
 export function HProblemsOverview() {
   return (
@@ -22,8 +26,7 @@ export function HProblemsOverview() {
         <Image
           src={couldBeBetter}
           alt="History is good, but it could be better"
-          style={{ objectFit: "cover" }}
-          height="100%"
+          {...imageProps}
         />
       </FlexBox>
       <Notes>
@@ -43,6 +46,7 @@ export function HProblemsOverview() {
 }
 
 export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
+  const AppearAs = ComponentAs === Slide ? Appear : "div";
   return (
     <ComponentAs {...styles}>
       <Heading>Anchor Integration</Heading>
@@ -52,7 +56,7 @@ export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
         `}
       </CodePane>
       <Text>How do we integrate this HTML with History?</Text>
-      <Appear>
+      <AppearAs>
         <CodePane language="html">
           {`
             <a href="my-url"> Click! </a>
@@ -66,7 +70,7 @@ export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
             </script>
           `}
         </CodePane>
-      </Appear>
+      </AppearAs>
       <Notes>
         <p>
           History has to be called manually, and doesn't integrate with HTML by
@@ -100,7 +104,7 @@ export function HNoEvent() {
         <UnorderedList>
           <Appear>
             <ListItem>
-              When you click a button, you get{" "}
+              When you click a button, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">click</Appear>
               </CodeSpan>{" "}
@@ -109,7 +113,7 @@ export function HNoEvent() {
           </Appear>
           <Appear>
             <ListItem>
-              When you change the URL hash, you get{" "}
+              When you change the URL hash, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">hashchange</Appear>
               </CodeSpan>{" "}
@@ -118,17 +122,22 @@ export function HNoEvent() {
           </Appear>
           <Appear>
             <ListItem>
-              When you submit a form, you get{" "}
+              When you submit a form, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">submit</Appear>
               </CodeSpan>{" "}
               event
             </ListItem>
           </Appear>
+        </UnorderedList>
+      </Slide>
+      <Slide>
+        <Heading>Trivia Time Pt 2</Heading>
+        <UnorderedList>
           <Appear>
             <ListItem>
               When the drawing buffer associated with a WebGLRenderingContext
-              object has been lost, you get{" "}
+              object has been lost, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">webglcontextlost</Appear>
               </CodeSpan>{" "}
@@ -137,8 +146,8 @@ export function HNoEvent() {
           </Appear>
           <Appear>
             <ListItem>
-              If a friend commits to hanging out with you this weekend, but then
-              later cancels the plans, you get a{" "}
+              If a friend <strong>commits</strong> to hanging out with you this
+              weekend, but then later cancels the plans, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">promise rejection</Appear>
               </CodeSpan>{" "}
@@ -159,7 +168,11 @@ export function HNoEvent() {
         </Notes>
       </Slide>
       <Slide>
-        <Image src={youGetNothing} />
+        <Image
+          src={youGetNothing}
+          alt="Willy Wonka shouting 'You get nothing! You lose! Good day sir!' emphatically"
+          {...imageProps}
+        />
       </Slide>
       <HNoEventSummary />
     </>
@@ -169,8 +182,8 @@ export function HNoEvent() {
 export function HNoEventSummary({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
-      <Heading>Nothing!</Heading>
-      <Text>Wait, really?</Text>
+      <Heading>No History Events</Heading>
+      <Text>This causes some problems...</Text>
       <Notes>
         <p>
           Isn't it wild that this very important event dealing with routing...
@@ -188,12 +201,38 @@ export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
       <Heading>Sharing Issues</Heading>
+      <FlexBox justifyContent="space-between">
+        <Image
+          src={babies2}
+          style={{ maxWidth: "49%" }}
+          alt="Two babies. The one on the left is crying because it doesn't have a pacifier. The other is content because it does have a pacifier"
+        />
+        <Appear
+          activeStyle={{ width: "49%", height: "100%", opacity: 1 }}
+          inactiveStyle={{ width: "49%", height: "100%", opacity: 0 }}
+        >
+          <Image
+            src={babies1}
+            style={{ maxWidth: "100%" }}
+            alt="Two babies. The one on the right is crying because it doesn't have a pacifier. The other is content because it does have a pacifier"
+          />
+        </Appear>
+      </FlexBox>
       <Notes>
         <p>
-          An unfortunate sideeffect of people building their own History
+          Because there's no standard event for history, intelligent people have
+          turned to creating their own history libraries so that they can keep
+          track of what event was fired (e.g. pushState), what needs to be
+          notified of that event, and what happens afterwards.
+        </p>
+        <p>
+          An unfortunate sideeffect of building a custom library for history
           management is that there's no standard way of sharing that info. E.g.
-          3rd party library, widget, or custom element. One of the "easiest"
-          ways of solving this is to directly monkeypatch history.pushState()
+          a 3rd party library, widget, or custom element. Either the history
+          library has to code in a way for outside parties to call into it
+          (which isn't fun for them), or (second slide step) 3rd parties have to
+          figure out some hacks to get their stuff integrated with the library.
+          No one is really happy in either case.
         </p>
       </Notes>
     </ComponentAs>
@@ -203,12 +242,25 @@ export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
 export function HStackHidden({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
-      <Heading>History Needs Its Own Space</Heading>
+      <Heading>Hidden History history</Heading>
+      <Text>In other words: the history stack is hidden</Text>
       <Notes>
         <p>
-          Due to security reasons, you can't see what's in the history stack; no
-          looking at what the URL was 3 navigations ago (unless you keep track
-          yourself)
+          For various reasons, you can't see what's in the history stack; no
+          looking at what the URL was 3 navigations ago, what the state was, and
+          in fact, there are some tricky things that you may not be aware of:
+          for example, if an iframe navigates, then you have another entry in
+          your history stack. If you navigate to a fragment (a.k.a. a hash
+          navigation), then the state can be lost!
+        </p>
+        <p>
+          This is yet another reason why smart people have created their own
+          History libraries; they can keep track of the stack, the state, and
+          can look through it all and find what they need.
+        </p>
+        <p>
+          And again, this can cause issues with sharing that stack! (Go back a
+          slide). We have even more sharing issues!
         </p>
       </Notes>
     </ComponentAs>

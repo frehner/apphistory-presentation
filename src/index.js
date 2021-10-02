@@ -15,9 +15,11 @@ import {
   AHEvent,
   AHStack,
   AHLoadingStatus,
+  AHBonusFeatures,
+  AHAccessibility,
 } from "./AppHistory";
 import { NeilsTalk, SelfInfo, TopicOverview } from "./IntroSlides";
-import { ImANobody } from "./ExitSlides";
+import { ImANobody, GetInvolved } from "./ExitSlides";
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -61,8 +63,12 @@ function MyPresentation() {
       <AHAnchorTag />
       <AHEvent />
       <AHStack />
+      <AHBonusFeatures />
       <AHLoadingStatus />
+      <AHAccessibility />
       <ImANobody />
+      <GetInvolved />
+      <SelfInfo />
     </Deck>
   );
 }

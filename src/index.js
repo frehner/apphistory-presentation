@@ -17,6 +17,7 @@ import {
   AHLoadingStatus,
   AHBonusFeatures,
   AHAccessibility,
+  AHEventSignal,
 } from "./AppHistory";
 import { NeilsTalk, SelfInfo, TopicOverview } from "./IntroSlides";
 import { ImANobody, GetInvolved } from "./ExitSlides";
@@ -66,6 +67,7 @@ function MyPresentation() {
       <AHBonusFeatures />
       <AHLoadingStatus />
       <AHAccessibility />
+      <AHEventSignal />
       <ImANobody />
       <GetInvolved />
       <SelfInfo />

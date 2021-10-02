@@ -146,8 +146,8 @@ export function HNoEvent() {
           </Appear>
           <Appear>
             <ListItem>
-              If a friend <strong>commits</strong> to hanging out with you this
-              weekend, but then later cancels the plans, you get a{" "}
+              If a friend commits to hanging out with you this weekend, but then
+              later cancels the plans, you get a{" "}
               <CodeSpan>
                 <Appear tagName="span">promise rejection</Appear>
               </CodeSpan>{" "}
@@ -198,6 +198,14 @@ export function HNoEventSummary({ ComponentAs = Slide, styles = {} }) {
 }
 
 export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
+  const AppearAs = ComponentAs === Slide ? Appear : "div";
+  const appearProps =
+    ComponentAs === Slide
+      ? {
+          activeStyle: { width: "49%", height: "100%", opacity: 1 },
+          inactiveStyle: { width: "49%", height: "100%", opacity: 0 },
+        }
+      : { style: { width: "49%" } };
   return (
     <ComponentAs {...styles}>
       <Heading>Sharing Issues</Heading>
@@ -207,16 +215,13 @@ export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
           style={{ maxWidth: "49%" }}
           alt="Two babies. The one on the left is crying because it doesn't have a pacifier. The other is content because it does have a pacifier"
         />
-        <Appear
-          activeStyle={{ width: "49%", height: "100%", opacity: 1 }}
-          inactiveStyle={{ width: "49%", height: "100%", opacity: 0 }}
-        >
+        <AppearAs {...appearProps}>
           <Image
             src={babies1}
             style={{ maxWidth: "100%" }}
             alt="Two babies. The one on the right is crying because it doesn't have a pacifier. The other is content because it does have a pacifier"
           />
-        </Appear>
+        </AppearAs>
       </FlexBox>
       <Notes>
         <p>

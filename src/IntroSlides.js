@@ -54,6 +54,15 @@ export function NeilsTalk() {
     <Slide>
       <Heading>A Better Talk</Heading>
       <Text>Neil's talk is going on, you probably want to be in that one</Text>
+      <Notes>
+        <p>
+          Hi everyone, before I get started I want to make sure you all know
+          where you are. You may be here by mistake - an old coworer of mine,
+          Neil, is also giving a talk right now and his talk will probably be
+          much more interesting than this one. Here, we're going to talk about
+          some crummy JS APIs. So yeah
+        </p>
+      </Notes>
     </Slide>
   );
 }
@@ -61,7 +70,7 @@ export function NeilsTalk() {
 export function SelfInfo() {
   return (
     <Slide>
-      <Heading>Intro</Heading>
+      <Heading>About Me</Heading>
       <Text>Anthony Frehner (fray-ner) </Text>
       <Text>
         <Link
@@ -69,15 +78,16 @@ export function SelfInfo() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Twitter
-        </Link>{" "}
-        &{" "}
+          Twitter: @frehner_a
+        </Link>
+      </Text>
+      <Text>
         <Link
           href="//github.com/frehner"
           target="_blank"
           rel="noopener noreferrer"
         >
-          GitHub
+          GitHub: frehner
         </Link>
       </Text>
       <Notes>

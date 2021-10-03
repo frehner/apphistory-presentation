@@ -16,11 +16,15 @@ export function ImANobody() {
       <Notes>
         <p>
           I'm not actually that self deprecating; I know that I'm somebody
-          important to my mom and my kids
+          important to my mom and my kids. I'm more bringing this up so that you
+          maybe feel a spark of inspiration
         </p>
         <p>
-          I'm more bringing this up so that you maybe feel a spark of
-          inspiration
+          The whole reason I'm giving this talk was because I began to be
+          slightly passionate about fixing history's issues, and then around
+          that same time I was directed to this newly created proposal. I don't
+          understand web spec stuff, I'm just some dev that said "hey this
+          sucks, how can I maybe make it better?"
         </p>
       </Notes>
     </Slide>

@@ -55,9 +55,9 @@ export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
           <a href="my-url"> Click! </a>
         `}
       </CodePane>
-      <Text>How do we integrate this HTML with History?</Text>
+      <Text>How do we integrate this anchor tag with History?</Text>
       <AppearAs>
-        <CodePane language="html">
+        <CodePane language="html" highlightRanges={[[6], [7], [5]]}>
           {`
             <a href="my-url"> Click! </a>
 

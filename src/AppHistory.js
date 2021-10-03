@@ -115,7 +115,7 @@ export function AHEvent() {
         secondStepContent={
           <>
             <Heading>Solution:</Heading>
-            <CodePane language="javascript">
+            <CodePane language="javascript" highlightRanges={[[1], [3, 5]]}>
               {`
                 appHistory.addEventListener("navigate", (evt) => {
                   // you can also add your own promise(s) to the navigation
@@ -146,6 +146,13 @@ export function AHStack() {
           App History's history (or entry) stack locks down the things that need
           to be, and allows the things you need as well: - no iframe entries, no
           missing state, and you can get the whole list at any time.
+        </p>
+        <p>
+          In fact, this also sounds like it could be potentially something you
+          could integrate wtih your bug reporting tool, right? if the app
+          crashes or there's a big error, let's get the last 5 entries, and add
+          that to the error trace so we can pretty clearly see where the user
+          was and where they went.
         </p>
         <p>
           Also, it's not something I'm going to dig into in this talk, but each
@@ -215,15 +222,40 @@ export function AHOverview() {
 export function AHLoadingStatus() {
   return (
     <Slide>
-      <Heading>Loading...</Heading>
-    </Slide>
-  );
-}
-
-export function AHAccessibility() {
-  return (
-    <Slide>
-      <Heading>Accessibility</Heading>
+      <Heading>Loading, Accessibility, & Metrics</Heading>
+      <CodePane
+        language="javascript"
+        showLineNumbers={false}
+        highlightRanges={[2]}
+      >
+        {`
+          appHistory.addEventListener('navigate', (evt) => {
+            evt.transitionWhile(somePromise)
+          })
+        `}
+      </CodePane>
+      <Notes>
+        <p>
+          Remember how anyone can add a promise to the navigation event, and
+          this is an API the browser is in charge of? This one standardized
+          event gives browsers a clear signal it can watch for to know 1) that
+          there's a transition happening, and 2) how long it's taking.
+        </p>
+        <p>
+          For loading, the browser could use their normal "page loading" UI that
+          it does for a full page refresh or navigation, but for your
+          single-page navigations!
+        </p>
+        <p>
+          Additionally, browsers can also notify assistive technologies that a
+          navigation is happening, that it's a single-page navigation, and how
+          long that navigation is taking.
+        </p>
+        <p>
+          And finally, it also makes keeping track of app metrics such as page
+          transitions and timing a lot easier and standardized.
+        </p>
+      </Notes>
     </Slide>
   );
 }
@@ -231,7 +263,30 @@ export function AHAccessibility() {
 export function AHEventSignal() {
   return (
     <Slide>
-      <Heading>Event Signal</Heading>
+      <Heading>Event AbortSignal</Heading>
+      <CodePane language="javascript" highlightRanges={[[2], 5]}>
+        {`
+          appHistory.addEventListener('navigate', (evt) => {
+            // evt.signal
+
+            evt.transitionWhile(
+              fetch(url, {signal: evt.signal})
+            )
+          })
+        `}
+      </CodePane>
+      <Notes>
+        <p>
+          Each navigate event comes with an abort signal. You can use this
+          signal to setup some logic to know if the navigation is cancelled (for
+          example, maybe the user hits the stop button in the browser UI)
+        </p>
+        <p>
+          The other nice thing about AbortSignals is that they can be used
+          natively with fetch, to essentially "cancel" the fetch and help
+          prevent your app from doing additional work when the promise resolves.
+        </p>
+      </Notes>
     </Slide>
   );
 }

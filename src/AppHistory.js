@@ -115,13 +115,10 @@ export function AHEvent() {
         secondStepContent={
           <>
             <Heading>Solution:</Heading>
-            <CodePane language="javascript" highlightRanges={[[1], [3, 5]]}>
+            <CodePane language="javascript" showLineNumbers={false}>
               {`
                 appHistory.addEventListener("navigate", (evt) => {
-                  // you can also add your own promise(s) to the navigation
-                  evt.transitionWhile(
-                    fetch(url).then(response => response.json())
-                  )
+                  // a navigation has started!
                 })
               `}
             </CodePane>
@@ -277,9 +274,11 @@ export function AHEventSignal() {
       </CodePane>
       <Notes>
         <p>
-          Each navigate event comes with an abort signal. You can use this
-          signal to setup some logic to know if the navigation is cancelled (for
-          example, maybe the user hits the stop button in the browser UI)
+          Each navigate event comes with an abort signal. An abort signal is a
+          standardized tool used in various APIs to signal that an event has
+          been cancelled/stopped. You can use this signal to setup some logic to
+          know if the navigation is cancelled (for example, maybe the user hits
+          the stop button in the browser UI)
         </p>
         <p>
           The other nice thing about AbortSignals is that they can be used

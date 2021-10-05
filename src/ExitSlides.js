@@ -41,7 +41,7 @@ export function ImANobody() {
 export function WrappingUp() {
   return (
     <Slide>
-      <Heading>Wraping Up</Heading>
+      <Heading>Wrapping Up</Heading>
       <Notes>
         <p>
           There's still quite a bit to talk about App History, and to discover.

@@ -9,6 +9,7 @@ import {
   Link,
   Stepper,
   Notes,
+  CodeSpan,
 } from "spectacle";
 
 export function TopicOverview() {
@@ -71,31 +72,32 @@ export function SelfInfo() {
   return (
     <Slide>
       <Heading>About Me</Heading>
-      <Text>Anthony Frehner (fray-ner) </Text>
-      <Text>
-        <Link
-          href="//twitter.com/frehner_a"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Twitter: @frehner_a
-        </Link>
-      </Text>
-      <Text>
-        <Link
-          href="//github.com/frehner"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub: frehner
-        </Link>
-      </Text>
-      <Notes>
-        <p>
-          One possible way to remember my last name is to think of me as a
-          frayed nerd.
-        </p>
-      </Notes>
+      <UnorderedList>
+        <ListItem>Anthony Frehner (fray-ner)</ListItem>
+        <ListItem>
+          <Link
+            href="//twitter.com/frehner_a"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitter: @frehner_a
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link
+            href="//github.com/frehner"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub: frehner
+          </Link>
+        </ListItem>
+        <ListItem>
+          Original proposor of <CodeSpan>*vh</CodeSpan> CSS units (lvh, dvh,
+          svh)
+        </ListItem>
+      </UnorderedList>
+      <Notes></Notes>
     </Slide>
   );
 }

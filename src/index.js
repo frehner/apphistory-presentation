@@ -18,7 +18,12 @@ import {
   AHBonusFeatures,
   AHEventSignal,
 } from "./AppHistory";
-import { NeilsTalk, SelfInfo, TopicOverview } from "./IntroSlides";
+import {
+  NeilsTalk,
+  SelfInfo,
+  TopicOverview,
+  AppHistoryRepo,
+} from "./IntroSlides";
 import { ImANobody, GetInvolved, WrappingUp } from "./ExitSlides";
 
 // SPECTACLE_CLI_THEME_START
@@ -54,6 +59,7 @@ function MyPresentation() {
       <NeilsTalk />
       <SelfInfo />
       <TopicOverview />
+      <AppHistoryRepo />
       <HProblemsOverview />
       <HAnchorIssues />
       <HNoEvent />

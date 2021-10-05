@@ -57,7 +57,7 @@ export function HAnchorIssues({ ComponentAs = Slide, styles = {} }) {
       </CodePane>
       <Text>How do we integrate this anchor tag with History?</Text>
       <AppearAs>
-        <CodePane language="html" highlightRanges={[[6], [7], [5]]}>
+        <CodePane language="html" highlightRanges={[[4], [6], [7], [5]]}>
           {`
             <a href="my-url"> Click! </a>
 
@@ -208,7 +208,7 @@ export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
       : { style: { width: "49%" } };
   return (
     <ComponentAs {...styles}>
-      <Heading>Sharing Issues</Heading>
+      <Heading>Sharing Issues (No Event Issues)</Heading>
       <FlexBox justifyContent="space-between">
         <Image
           src={babies2}
@@ -247,9 +247,13 @@ export function HShareIssues({ ComponentAs = Slide, styles = {} }) {
 export function HStackHidden({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
-      <Heading>Hidden History history</Heading>
+      <Heading>Hidden History</Heading>
       <Text>In other words: the history stack is hidden</Text>
       <Notes>
+        <p>
+          Think of the history stack as like the list of pages you see when you
+          hold down on the browser's back button.
+        </p>
         <p>
           For various reasons, you can't see what's in the history stack; no
           looking at what the URL was 3 navigations ago, what the state was, and

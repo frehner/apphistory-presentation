@@ -23,7 +23,7 @@ export function TopicOverview() {
               return (
                 <UnorderedList>
                   <ListItem>Get out of work for the day</ListItem>
-                  <ListItem>Get lunch</ListItem>
+                  <ListItem>Get food</ListItem>
                   <ListItem>
                     See another person for the first time in ~2 years
                   </ListItem>
@@ -40,10 +40,37 @@ export function TopicOverview() {
         </Stepper>
       </Text>
       <Notes>
+        <p></p>
+      </Notes>
+    </Slide>
+  );
+}
+
+export function AppHistoryRepo() {
+  return (
+    <Slide>
+      <Heading>App History repo</Heading>
+      <Text>
+        <Link
+          href="//github.com/wicg/app-history"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/wicg/app-history
+        </Link>
+      </Text>
+
+      <Notes>
         <p>
-          Whoops, don't show that list to your boss. If your boss is here, tell
-          them that next week's sprint tasks were accidentally deleted, that
-          should buy you time to do what you need to do.
+          App history is a new proposal, and its main purpose is to fix some of
+          the glaring issues with the current html5 history routing, as well as
+          providing some cool new features on top of it. Here's a link to the
+          repo, but be warned, there's a huge wall of text there! So I'm going
+          to give you the TLDR version here, hopefully!
+        </p>
+        <p>
+          To get started, though, let's talk about some of those issues that
+          history has currently:
         </p>
       </Notes>
     </Slide>

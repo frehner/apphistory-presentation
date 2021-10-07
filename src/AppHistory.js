@@ -219,7 +219,7 @@ export function AHOverview() {
 export function AHLoadingStatus() {
   return (
     <Slide>
-      <Heading>Loading, Accessibility, & Metrics</Heading>
+      <Heading>Transition While</Heading>
       <CodePane
         language="javascript"
         showLineNumbers={false}
@@ -260,7 +260,7 @@ export function AHLoadingStatus() {
 export function AHEventSignal() {
   return (
     <Slide>
-      <Heading>Event AbortSignal</Heading>
+      <Heading>AbortSignal</Heading>
       <CodePane language="javascript" highlightRanges={[[2], 5]}>
         {`
           appHistory.addEventListener('navigate', (evt) => {

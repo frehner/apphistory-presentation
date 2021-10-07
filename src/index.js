@@ -24,7 +24,7 @@ import {
   TopicOverview,
   AppHistoryRepo,
 } from "./IntroSlides";
-import { ImANobody, GetInvolved, WrappingUp } from "./ExitSlides";
+import { GetInvolved, WrappingUp } from "./ExitSlides";
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -73,7 +73,6 @@ function MyPresentation() {
       <AHLoadingStatus />
       <AHEventSignal />
       <WrappingUp />
-      <ImANobody />
       <GetInvolved />
       <SelfInfo />
     </Deck>

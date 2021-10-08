@@ -11,11 +11,13 @@ import {
   Image,
   CodePane,
   Notes,
+  Box,
 } from "spectacle";
 import youGetNothing from "./media/you-get-nothing.gif";
 import couldBeBetter from "./media/could-be-better.jpg";
 import babies1 from "./media/babies1.jpg";
 import babies2 from "./media/babies2.png";
+import hidingDog from "./media/hiding-dog.jpg";
 
 const imageProps = { style: { objectFit: "cover" }, height: "100%" };
 
@@ -248,7 +250,13 @@ export function HStackHidden({ ComponentAs = Slide, styles = {} }) {
   return (
     <ComponentAs {...styles}>
       <Heading>Hidden History</Heading>
-      <Text>In other words: the history stack is hidden</Text>
+      <Image
+        src={hidingDog}
+        alt="A dog with only its eyes and head covered by a window curtain"
+        minWidth="0"
+        minHeight="0"
+        style={{ objectFit: "contain" }}
+      />
       <Notes>
         <p>
           Think of the history stack as like the list of pages you see when you

@@ -18,12 +18,7 @@ import {
   AHBonusFeatures,
   AHEventSignal,
 } from "./AppHistory";
-import {
-  NeilsTalk,
-  SelfInfo,
-  TopicOverview,
-  AppHistoryRepo,
-} from "./IntroSlides";
+import { SelfInfo, TopicOverview, AppHistoryRepo } from "./IntroSlides";
 import { GetInvolved, WrappingUp } from "./ExitSlides";
 
 // SPECTACLE_CLI_THEME_START
@@ -56,7 +51,6 @@ const template = () => (
 function MyPresentation() {
   return (
     <Deck theme={theme} template={template}>
-      <NeilsTalk />
       <SelfInfo />
       <TopicOverview />
       <AppHistoryRepo />

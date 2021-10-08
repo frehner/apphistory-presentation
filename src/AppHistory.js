@@ -162,7 +162,16 @@ export function AHStack() {
         firstStepContent={
           <>
             <Heading>Problem:</Heading>
-            <HStackHidden ComponentAs={Box} styles={historyProblemStyles} />
+            <HStackHidden
+              ComponentAs={FlexBox}
+              styles={{
+                style: {
+                  ...historyProblemStyles,
+                  flexDirection: "column",
+                  transform: "scale(.5) translateY(-50%)",
+                },
+              }}
+            />
           </>
         }
         secondStepContent={
@@ -195,14 +204,13 @@ export function AHOverview() {
         <FlexBox alignItems="center" height="100%" flexDirection="column">
           <Heading>App History</Heading>
           <Appear>
-            <Text>The foundation of web 3.0? 🤔</Text>
+            <Text>The foundation of web 4.0? 🤔</Text>
           </Appear>
         </FlexBox>
         <Notes>
           <p>
-            I actually don't know what this Web 3.0 stuff is, and I don't
-            actually think of App History as some sort of angel that will save
-            us from history's sins or whatever.
+            I actually don't know what this Web 3.0 stuff is, but maybe 4.0 will
+            need app history?
           </p>
           <p>
             But the hope is that App History can fix some of those glaring

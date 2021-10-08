@@ -34,6 +34,7 @@ export function TopicOverview() {
               <UnorderedList>
                 <ListItem>Learn history's shortcomings</ListItem>
                 <ListItem>Introduction to AppHistory</ListItem>
+                <ListItem>Solicit feedback</ListItem>
               </UnorderedList>
             );
           }}
@@ -77,24 +78,6 @@ export function AppHistoryRepo() {
   );
 }
 
-export function NeilsTalk() {
-  return (
-    <Slide>
-      <Heading>A Better Talk</Heading>
-      <Text>Neil's talk is going on, you probably want to be in that one</Text>
-      <Notes>
-        <p>
-          Hi everyone, before I get started I want to make sure you all know
-          where you are. You may be here by mistake - an old coworer of mine,
-          Neil, is also giving a talk right now and his talk will probably be
-          much more interesting than this one. Here, we're going to talk about
-          some crummy JS APIs. So yeah
-        </p>
-      </Notes>
-    </Slide>
-  );
-}
-
 export function SelfInfo() {
   return (
     <Slide>
@@ -123,8 +106,15 @@ export function SelfInfo() {
           Original proposor of <CodeSpan>*vh</CodeSpan> CSS units (lvh, dvh,
           svh)
         </ListItem>
+        <ListItem>single-spa maintainer</ListItem>
       </UnorderedList>
-      <Notes></Notes>
+      <Notes>
+        <p>
+          I'm Anthony Frehner, the favorite child of my mother, favorite
+          employee of my boss, and completely trustable in everything that I
+          say.
+        </p>
+      </Notes>
     </Slide>
   );
 }

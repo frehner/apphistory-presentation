@@ -110,6 +110,12 @@ export function SelfInfo() {
       </UnorderedList>
       <Notes>
         <p>
+          There's some fun things about being the last speaker in the day: 1)
+          You need to eat lunch very carefully, or else you'll have some fun
+          stains during your talk, and 2) Due to the full day of anxiety, my
+          watch's fitness tracker thinks I've been sprinting since 6:45am.
+        </p>
+        <p>
           I'm Anthony Frehner, the favorite child of my mother, favorite
           employee of my boss, and completely trustable in everything that I
           say.

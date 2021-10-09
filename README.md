@@ -2,6 +2,10 @@
 
 This presentation was created in Oct 2021 to give an overview of the App History proposal as it existed at that time. Note that things here may change at any moment, since this is a proposal and not a finalized spec. Also note that my speaker notes don't exactly match what I said during my talk, but do give a general idea of what I did speak about for each slide.
 
+[View the slides](https://apphistory-presentation.netlify.app)
+
+[View the slides with (rough) speaker notes](https://apphistory-presentation.netlify.app/?presenterMode=true)
+
 ---
 
 Spectacle Boilerplate
